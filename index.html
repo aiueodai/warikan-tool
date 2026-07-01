@@ -12,21 +12,19 @@
     <header class="hero">
       <p class="eyebrow">KANPAI CALCULATOR</p>
       <h1>傾斜割り勘</h1>
-      <p>1次会も2次会も、まとめて気持ちよく精算。</p>
+      <p>複数の会とグループをまとめて精算。</p>
     </header>
 
     <section class="card">
       <div class="section-heading">
         <div>
           <h2>会計</h2>
-          <p>会ごとの合計金額</p>
+          <p>金額差はグループ順位ごとの差額です</p>
         </div>
-
         <button id="add-event" class="secondary-button" type="button">
           ＋ 会を追加
         </button>
       </div>
-
       <div id="events" class="events"></div>
     </section>
 
@@ -36,18 +34,39 @@
           <h2>参加者</h2>
           <p id="member-count">0人</p>
         </div>
-
         <button id="add-member" class="secondary-button" type="button">
           ＋ 参加者
         </button>
       </div>
 
-      <p class="table-hint">各会に参加する人へチェックを入れてください。</p>
+      <p class="hint">
+        固定額は必要な場合だけ入力してください。空欄なら自動計算します。
+      </p>
 
       <div class="table-scroll">
-        <table class="member-table">
-          <thead id="member-table-head"></thead>
-          <tbody id="member-table-body"></tbody>
+        <table id="member-table">
+          <thead id="member-head"></thead>
+          <tbody id="member-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-heading">
+        <div>
+          <h2>グループ設定</h2>
+          <p>グループ全員の1人あたり固定額</p>
+        </div>
+      </div>
+
+      <p class="hint">
+        空欄は自動調整です。個人固定額がある場合はそちらを優先します。
+      </p>
+
+      <div class="table-scroll">
+        <table id="group-table">
+          <thead id="group-head"></thead>
+          <tbody id="group-body"></tbody>
         </table>
       </div>
     </section>
@@ -64,51 +83,22 @@
           <p class="eyebrow">RESULT</p>
           <h2>支払い金額</h2>
         </div>
-
         <button id="copy-result" class="secondary-button" type="button">
           結果をコピー
         </button>
       </div>
 
-      <div class="table-scroll result-table-wrap">
-        <table class="result-table">
-          <thead id="result-table-head"></thead>
-          <tbody id="result-table-body"></tbody>
-          <tfoot id="result-table-foot"></tfoot>
+      <div class="table-scroll result-wrap">
+        <table>
+          <thead id="result-head"></thead>
+          <tbody id="result-body"></tbody>
+          <tfoot id="result-foot"></tfoot>
         </table>
       </div>
 
       <p id="copy-status" class="copy-status" aria-live="polite"></p>
     </section>
   </main>
-
-  <template id="event-template">
-    <div class="event-row">
-      <input
-        class="event-name"
-        type="text"
-        maxlength="30"
-        aria-label="会の名前"
-      >
-
-      <span class="yen-input">
-        <input
-          class="event-total"
-          type="number"
-          min="1"
-          step="1"
-          inputmode="numeric"
-          placeholder="12000"
-          aria-label="合計金額"
-        >
-        <b>円</b>
-      </span>
-
-      <button class="remove-button remove-event" type="button" aria-label="会を削除">
-        ×
-      </button>
-    </div>
-  </template>
 
   <script src="script.js"></script>
 </body>
