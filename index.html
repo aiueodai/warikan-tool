@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ff6b4a">
+  <title>傾斜割り勘</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <p class="eyebrow">KANPAI CALCULATOR</p>
+      <h1>傾斜割り勘</h1>
+      <p>飲み会のお会計を、負担度に合わせて気持ちよく。</p>
+    </header>
+
+    <section class="card">
+      <h2>お会計</h2>
+      <label class="amount-field">
+        <span>合計金額</span>
+        <span class="amount-input">
+          <input
+            id="total"
+            type="number"
+            min="1"
+            step="1"
+            inputmode="numeric"
+            placeholder="12000"
+          >
+          <b>円</b>
+        </span>
+      </label>
+    </section>
+
+    <section class="card">
+      <div class="section-heading">
+        <div>
+          <h2>参加者</h2>
+          <p id="member-count">0人</p>
+        </div>
+        <button id="add-member" class="secondary-button" type="button">
+          ＋ 追加
+        </button>
+      </div>
+
+      <div id="members" class="members"></div>
+    </section>
+
+    <button id="calculate" class="primary-button" type="button">
+      割り勘を計算する
+    </button>
+
+    <p id="error" class="error" role="alert" aria-live="polite"></p>
+
+    <section id="result-card" class="card result-card" hidden>
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">RESULT</p>
+          <h2>支払い金額</h2>
+        </div>
+        <button id="copy-result" class="secondary-button" type="button">
+          結果をコピー
+        </button>
+      </div>
+
+      <div id="results" class="results"></div>
+
+      <div class="result-total">
+        <span>合計</span>
+        <strong id="result-total">0円</strong>
+      </div>
+
+      <p id="copy-status" class="copy-status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <template id="member-template">
+    <div class="member-row">
+      <label>
+        <span class="sr-only">参加者名</span>
+        <input
+          class="member-name"
+          type="text"
+          maxlength="30"
+          placeholder="名前"
+        >
+      </label>
+
+      <label>
+        <span class="sr-only">負担度</span>
+        <select class="member-weight">
+          <option value="1.2">多め（1.2）</option>
+          <option value="1" selected>普通（1.0）</option>
+          <option value="0.8">少なめ（0.8）</option>
+        </select>
+      </label>
+
+      <button
+        class="remove-member"
+        type="button"
+        aria-label="参加者を削除"
+      >
+        ×
+      </button>
+    </div>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
